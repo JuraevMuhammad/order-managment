@@ -49,6 +49,17 @@ public class ProductService : ICustomerManager, IProductManager
         }
     }
 
+    private int cnt = 0;
     public void AddCustomer(Customers customer)
-    { }
+    {
+        int count = 0;
+        _customers.Add(customer);
+        cnt++;
+        if (cnt > count)
+        {
+            Console.WriteLine($"Покупатель {customer._customerId} успешно добавлен!");
+        }
+
+        count = cnt;
+    }
 }

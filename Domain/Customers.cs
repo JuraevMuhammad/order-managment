@@ -23,7 +23,7 @@ public class Customers
         }
     }
 
-    private int cnt = 1;
+    private int cnt = 0;
     private string count = "0000";
     public Customers(string firstName, string lastName, string address)
     {
@@ -34,6 +34,17 @@ public class Customers
         
         FirstName = firstName;
         LastName = lastName;
+        Address = address;
+    }
+    
+    public Customers(string firstName, string address)
+    {
+        cnt++;
+        string res = count.Remove(count.Length - cnt.ToString().Length);
+        string newRes = res.Insert(res.Length, cnt.ToString());
+        CustomerId = newRes;
+        
+        FirstName = firstName;
         Address = address;
     }
 

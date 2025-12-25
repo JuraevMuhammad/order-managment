@@ -30,7 +30,16 @@ public class ProductService : ICustomerManager, IProductManager
     {
         var res = _customers.Find(x => x.FirstName.ToLower().StartsWith(searchTerm.ToLower()) 
                                        || x.LastName.ToLower().StartsWith(searchTerm.ToLower()));
-        return res;
+        var res2 = _customers.Find(x => x.FirstName.ToLower().Contains(searchTerm.ToLower())
+        || x.LastName.ToLower().Contains(searchTerm.ToLower()));
+        if (res != null || res2 != null)
+        {
+            return res;
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public void DisplayProducts()

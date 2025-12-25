@@ -26,8 +26,9 @@ public class ProductService : ICustomerManager, IProductManager
         }
     }
 
-    public Customers FindCustomer(string searchTerm)
+    public Customers FindCustomer(string search)
     {
+        string searchTerm = search.Trim().Replace(" ", "");
         var res = _customers.Find(x => x.FirstName.ToLower().StartsWith(searchTerm.ToLower()) 
                                        || x.LastName.ToLower().StartsWith(searchTerm.ToLower()));
         var res2 = _customers.Find(x => x.FirstName.ToLower().Contains(searchTerm.ToLower())
